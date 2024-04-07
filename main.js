@@ -1,11 +1,11 @@
 function getComputerChoice() {
     let computerChoice = Math.floor(Math.random() * 3) + 1;
     if (computerChoice === 1) {
-        return "Rock";
+        return "rock";
     } else if (computerChoice === 2) {
-        return "Paper";
+        return "paper";
     } else {
-        return "Scissors";
+        return "scissors";
     }
 }
 
@@ -13,19 +13,28 @@ let playerScore = 0;
 let computerScore = 0;
 
 function playRound(playerSelection, computerSelection) {
-    playerSelection = (prompt("Please select rock, paper or scissors.")).toLowerCase();
-    computerSelection = (getComputerChoice()).toLowerCase();
+    let result = "";
+    computerSelection = getComputerChoice();
     if ((playerSelection === "rock" && computerSelection === "paper") || 
         (playerSelection === "paper" && computerSelection === "scissors") || 
         (playerSelection === "scissors" && computerSelection === "rock")) {
         computerScore++;
-        return `You Lose! ${computerSelection} beats ${playerSelection}. Score: ${playerScore}:${computerScore}`
+        result = `You Lose! ${computerSelection} beats ${playerSelection}. Score: ${playerScore}:${computerScore}`;
     } else if ((playerSelection === "rock" && computerSelection === "scissors") || 
                (playerSelection === "paper" && computerSelection === "rock") || 
                (playerSelection === "scissors" && computerSelection === "paper")) {
         playerScore++;
-        return `You Win! ${playerSelection} beats ${computerSelection}. Score: ${playerScore}:${computerScore}`
+        result = `You Win! ${playerSelection} beats ${computerSelection}. Score: ${playerScore}:${computerScore}`;
     } else {
-        return `Tie! Score: ${playerScore}:${computerScore}`
+        result = `Tie! Score: ${playerScore}:${computerScore}`;
     }
+    console.log(result);
 }
+
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
+
+rock.addEventListener("click", () => playRound("rock"));
+paper.addEventListener("click", () => playRound("paper"));
+scissors.addEventListener("click", () => playRound("scissors"));
