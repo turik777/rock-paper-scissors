@@ -29,18 +29,3 @@ function playRound(playerSelection, computerSelection) {
         return `Tie! Score: ${playerScore}:${computerScore}`
     }
 }
-
-function playGame() {
-    for (let i = 0; i < 5; i++) {
-        console.log(playRound());
-    }
-    if (playerScore < computerScore) {
-        return "You Lose!"
-    } else if (playerScore > computerScore) {
-        return "You Win!"
-    } else {
-        return "Tie!"
-    }
-}
-
-console.log(playGame());
